@@ -489,6 +489,54 @@ h3 { font-size: 1.28rem; font-weight: 700; line-height: 1.2; }
 .work figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 20px; border-top: 1px solid var(--line); }
 .work figcaption b { font-family: var(--font-display); }
 
+/* ---------- Pré-visualizações visuais dos projectos ---------- */
+.work-visual {
+  position: relative; width: 100%; height: 100%; min-height: 220px;
+  padding: 18px; display: grid; place-items: center; overflow: hidden;
+  background: radial-gradient(ellipse at 78% 18%, rgba(0,200,120,.17), transparent 48%), #0b120e;
+}
+.visual-window {
+  width: min(100%, 430px); min-height: 190px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.13); border-radius: 12px;
+  background: #111b15; box-shadow: 0 18px 50px rgba(0,0,0,.38);
+  transform: perspective(900px) rotateX(2deg);
+  transition: transform .6s var(--ease), border-color .4s;
+}
+.work:hover .visual-window { transform: perspective(900px) rotateX(0) translateY(-4px) scale(1.015); border-color: rgba(0,200,120,.55); }
+.visual-topbar { height: 27px; padding: 0 10px; display:flex; align-items:center; gap:5px; background:#18251d; border-bottom:1px solid rgba(255,255,255,.07); }
+.visual-topbar i { width:6px; height:6px; border-radius:50%; background:#53665a; }
+.visual-topbar span { margin-left:8px; color:#8fa096; font-size:8px; letter-spacing:.04em; }
+.visual-body { display:grid; grid-template-columns:58px 1fr; min-height:164px; }
+.visual-side { padding:12px 8px; display:grid; align-content:start; gap:10px; background:#0d1711; border-right:1px solid rgba(255,255,255,.06); }
+.visual-side b { width:22px; height:22px; display:grid; place-items:center; margin:0 auto 3px; border-radius:7px; background:rgba(0,200,120,.16); color:#00c878; font-size:10px; }
+.visual-side span { height:4px; border-radius:4px; background:#33443a; }
+.visual-side span:nth-child(3) { width:75%; }.visual-side span:nth-child(4) { width:88%; }.visual-side span:nth-child(5) { width:62%; }
+.visual-content { padding:12px; min-width:0; }
+.visual-heading { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; }
+.visual-heading strong { color:#edf5ef; font-size:10px; }.visual-heading small { color:#8da196; font-size:7px; }
+.visual-chip { padding:3px 6px; border:1px solid rgba(0,200,120,.25); border-radius:20px; color:#65e6a9; font-size:7px; white-space:nowrap; }
+.visual-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.visual-kpi { padding:7px; border:1px solid rgba(255,255,255,.07); border-radius:6px; background:rgba(255,255,255,.025); }
+.visual-kpi small { display:block; color:#87968c; font-size:6px; }.visual-kpi b { display:block; margin-top:4px; color:#e8f2eb; font-size:10px; }
+.visual-lower { display:grid; grid-template-columns:1.15fr .85fr; gap:7px; margin-top:8px; }
+.visual-chart,.visual-activity { min-height:55px; padding:7px; border:1px solid rgba(255,255,255,.07); border-radius:6px; background:rgba(255,255,255,.02); }
+.visual-chart small,.visual-activity small { color:#93a398; font-size:6px; }
+.chart-bars { height:34px; display:flex; align-items:end; gap:4px; padding-top:5px; }
+.chart-bars i { flex:1; min-width:4px; height:var(--bar); border-radius:3px 3px 0 0; background:linear-gradient(180deg,#38e89a,#087c50); transform-origin:bottom; animation:visualRise 1.1s cubic-bezier(.2,.8,.2,1) both; animation-delay:var(--delay,0s); }
+.visual-activity em { display:block; height:4px; margin-top:7px; border-radius:4px; background:#314138; }.visual-activity em:nth-of-type(2) { width:72%; }.visual-activity em:nth-of-type(3) { width:84%; }
+.visual-status { display:flex; align-items:center; gap:5px; margin-top:7px; color:#b8c9be; font-size:7px; }
+.visual-status i { width:5px; height:5px; border-radius:50%; background:#00c878; box-shadow:0 0 8px rgba(0,200,120,.8); }
+.visual-note { position:absolute; right:12px; bottom:10px; padding:4px 7px; border-radius:20px; color:#c8d7ce; background:rgba(5,12,8,.78); border:1px solid rgba(255,255,255,.12); font-size:7px; letter-spacing:.02em; }
+.preview-case .visual-body { grid-template-columns:48px 1fr; }
+.case-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:9px; }
+.case-step { padding:7px 5px; border-radius:6px; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.07); }
+.case-step i { display:block; width:13px; height:13px; margin-bottom:6px; border-radius:4px; background:rgba(0,200,120,.2); border:1px solid rgba(0,200,120,.4); }
+.case-step b { display:block; color:#e5eee8; font-size:7px; }.case-step small { color:#8b9c91; font-size:6px; }
+.case-step.active { border-color:rgba(0,200,120,.45); background:rgba(0,200,120,.07); }
+@keyframes visualRise { from { transform:scaleY(.12); opacity:.35; } to { transform:scaleY(1); opacity:1; } }
+@media (prefers-reduced-motion: reduce) { .chart-bars i { animation:none; } .visual-window { transition:none; } }
+@media (max-width:480px) { .work-visual { padding:12px; min-height:205px; } .visual-window { transform:none; } .visual-content { padding:9px; } }
+
 /* ---------- Diferenciais ---------- */
 .dif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px; }
 .dif { padding: 28px 24px; border-radius: var(--radius); background: rgba(245, 247, 245, .025); border: 1px solid var(--line); display: grid; gap: 12px; align-content: start; transition: transform .5s var(--ease), border-color .4s, background .4s; }
@@ -1000,18 +1048,64 @@ h3 { font-size: 1.28rem; font-weight: 700; line-height: 1.2; }
         </header>
 
         <div class="work-grid" id="work-grid">
-          <figure class="work reveal" data-img="Capturar4.PNG" data-title="Website para uma óptica" data-desc="Desenvolvimento de uma presença web para apresentação de serviços de óptica.">
-            <div class="work-media"><span class="work-ph"><i class="fa-solid fa-glasses"></i></span></div>
+          <figure class="work reveal" data-title="Website para uma óptica" data-desc="Pré-visualização conceptual de uma interface de gestão para uma óptica. Não representa métricas nem um painel real do cliente.">
+            <div class="work-media">
+              <div class="work-visual preview-optica" aria-label="Demonstração conceptual de painel para óptica">
+                <div class="visual-window">
+                  <div class="visual-topbar"><i></i><i></i><i></i><span>painel.optica / visão geral</span></div>
+                  <div class="visual-body">
+                    <aside class="visual-side"><b>O</b><span></span><span></span><span></span><span></span></aside>
+                    <div class="visual-content">
+                      <div class="visual-heading"><strong>Painel da óptica</strong><span class="visual-chip">Visão geral</span></div>
+                      <div class="visual-kpis">
+                        <div class="visual-kpi"><small>Agenda</small><b>Consultas</b></div>
+                        <div class="visual-kpi"><small>Atendimento</small><b>Clientes</b></div>
+                        <div class="visual-kpi"><small>Operação</small><b>Pedidos</b></div>
+                      </div>
+                      <div class="visual-lower">
+                        <div class="visual-chart"><small>Actividade semanal · ilustração</small><div class="chart-bars"><i style="--bar:38%;--delay:.05s"></i><i style="--bar:66%;--delay:.12s"></i><i style="--bar:48%;--delay:.19s"></i><i style="--bar:86%;--delay:.26s"></i><i style="--bar:58%;--delay:.33s"></i><i style="--bar:96%;--delay:.4s"></i><i style="--bar:72%;--delay:.47s"></i></div></div>
+                        <div class="visual-activity"><small>Atalhos</small><em></em><em></em><em></em><div class="visual-status"><i></i> Interface conceptual</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="visual-note">Demonstração conceptual</span>
+              </div>
+            </div>
             <figcaption><span class="demo-tag static">Website</span><b>Website para uma óptica</b></figcaption>
           </figure>
-          <figure class="work reveal" style="--d:.08s" data-title="Autentika Angola" data-desc="Website institucional para apresentação de serviços documentais, assessoria migratória e apoio a empresas.">
-            <div class="work-media"><span class="work-ph"><i class="fa-solid fa-building"></i></span></div>
+          <figure class="work reveal" style="--d:.08s" data-title="Autentika Angola" data-desc="Pré-visualização conceptual de uma área de acompanhamento de solicitações, criada apenas para ilustrar possibilidades de interface.">
+            <div class="work-media">
+              <div class="work-visual preview-case" aria-label="Demonstração conceptual de acompanhamento de processos">
+                <div class="visual-window">
+                  <div class="visual-topbar"><i></i><i></i><i></i><span>autentika / área de acompanhamento</span></div>
+                  <div class="visual-body">
+                    <aside class="visual-side"><b>A</b><span></span><span></span><span></span><span></span></aside>
+                    <div class="visual-content">
+                      <div class="visual-heading"><strong>Acompanhamento de processos</strong><span class="visual-chip">Demonstração</span></div>
+                      <div class="visual-kpis">
+                        <div class="visual-kpi"><small>Área</small><b>Documentos</b></div>
+                        <div class="visual-kpi"><small>Etapa</small><b>Em análise</b></div>
+                        <div class="visual-kpi"><small>Próximo passo</small><b>Revisão</b></div>
+                      </div>
+                      <div class="case-flow">
+                        <div class="case-step active"><i></i><b>Recebido</b><small>Pedido registado</small></div>
+                        <div class="case-step active"><i></i><b>Em análise</b><small>Verificação</small></div>
+                        <div class="case-step"><i></i><b>Concluído</b><small>Entrega</small></div>
+                      </div>
+                      <div class="visual-status"><i></i> Exemplo visual · sem dados reais</div>
+                    </div>
+                  </div>
+                </div>
+                <span class="visual-note">Demonstração conceptual</span>
+              </div>
+            </div>
             <figcaption><span class="demo-tag static">Website institucional</span><b>Autentika Angola</b></figcaption>
             <div style="padding:0 20px 18px">
               <a href="https://autentika-angola.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--green);font-weight:600">Visitar projeto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </figure>
-        </div>
+        </div>  </div>
       </div>
     </section>
 
